@@ -1,0 +1,47 @@
+services:
+
+    # Application
+    app:
+        build:
+            context: .
+            dockerfile: app.dockerfile
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - "database"
+    # Web Server
+    web:
+        build:
+            context: .
+            dockerfile: web.dockerfile
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - "app"
+        ports:
+            - 80:80
+    # Database
+    database:
+        image: mysql:8.0
+        volumes:
+            - dbdata:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: data-management
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD:
+            MYSQL_USER: root
+        ports:
+            - 33061:3306
+    # Mailing Server
+    mailhog:
+        image: mailhog/mailhog
+        logging:
+            driver: 'none'
+        ports:
+            - 1025:1025
+            - 8025:8025
+
+volumes:
+    dbdata:
