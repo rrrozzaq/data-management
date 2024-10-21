@@ -66,6 +66,39 @@ Before you proceed with the installation, ensure you have the following installe
     ```bash
     docker-compose up --build
     ```
+
+    For the Docker section, here's an addition to your README.md to help users understand how to access and use the Docker container for your project:
+
+---
+
+# Docker Container
+
+The Docker container for this project is available on Docker Hub and can be easily pulled and run locally with the following steps:
+
+## Pulling the Docker Image
+
+To pull the Docker image for the Data Management API, use the following Docker command:
+
+```bash
+docker pull abdrozzaq/data-management
+```
+
+## Running the Docker Container
+
+After pulling the image, you can run the container using:
+
+```bash
+docker run -d -p 80:80 abdrozzaq/data-management
+```
+
+This command will start the container in detached mode and map port 80 of the container to port 80 on your host, allowing you to access the API at `http://localhost`.
+
+## Accessing the Docker Image
+
+The Docker image is hosted on Docker Hub and can be accessed at the following URL:
+[Docker Hub - abdrozzaq/data-management](https://hub.docker.com/r/abdrozzaq/data-management/)
+
+This image includes all necessary configurations to run the Data Management API, and it is ready to be deployed in any Docker-compatible environment.
     
 ## API Endpoints
 
